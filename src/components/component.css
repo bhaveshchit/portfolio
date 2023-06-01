@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+nav{
+    background-color: #ffffff;
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+.nav-link{
+    text-decoration: none;
+    color: black;
+    margin-left: 15px;
+}
+a:visited{
+color: black;
+}
+.nav-link:hover{
+    color: black;
+    border: 1px solid black;
+    padding: 5%;
+    border-radius: 10px;
+}
+.navbar-brand{
+color: black;
+font-size: 1.6rem;
+font-family: 'Dancing Script', cursive;
+font-weight: 400;
+
+}
+
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+  .home-left-greet{
+    text-align: center;
+    margin-top: 14%;
+  }
+  .greet-para{
+    padding: 2%;
+    justify-content: left;
+    text-align: left;
+  }
+ .greet-img{
+    margin-top: 12%;
+    max-width: 100%;
+ }
+ .heading-about{
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 300;
+    font-size: 3rem;
+ }
+ .about-para{
+    padding: 5%;
+    font-size: 1.2rem;
+ }
+ .about-para {
+    position: relative;
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+
+  b{
+    color: blue;
+  }
+  .about-head{
+    margin-top:5%;
+    margin-left: 6%;
+    font-weight: 500;
+    color: blue;
+    font-size: 2rem;
+  }
