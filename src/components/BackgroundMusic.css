@@ -1,0 +1,92 @@
+.music-toggle-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+  outline: none;
+  font-size: 1.5rem;
+}
+
+.music-toggle-btn:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25));
+  border-color: var(--secondary-color);
+  box-shadow: 0 6px 24px rgba(99, 102, 241, 0.2);
+  transform: scale(1.1);
+}
+
+.music-toggle-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.music-toggle-btn.playing {
+  animation: musicPulse 1.5s ease-in-out infinite;
+}
+
+.music-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.music-toggle-btn.playing .music-icon {
+  animation: musicBounce 1s ease-in-out infinite;
+}
+
+.music-toggle-btn:active .music-icon {
+  transform: scale(0.9);
+}
+
+@keyframes musicPulse {
+  0%, 100% {
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
+  }
+}
+
+@keyframes musicBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Light mode */
+.app.light .music-toggle-btn {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+  border-color: var(--primary-color);
+}
+
+.app.light .music-toggle-btn:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .music-toggle-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+}
