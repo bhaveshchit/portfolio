@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function Experience() {
   const [selectedExp, setSelectedExp] = useState(null);
+  const [visibleItems, setVisibleItems] = useState(new Set());
+  const observerRef = useRef(null);
 
   const experiences = [
     {
@@ -56,6 +58,38 @@ function Experience() {
     }
   ];
 
+  // Setup intersection observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px',
+    };
+
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setVisibleItems((prev) => new Set([...prev, entry.target.id]));
+          observerRef.current.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const items = document.querySelectorAll('.experience-item');
+    items.forEach((item) => {
+      if (observerRef.current) {
+        observerRef.current.observe(item);
+      }
+    });
+  }, []);
+
   return (
     <>
       <section id="experience" className="section">
@@ -63,7 +97,11 @@ function Experience() {
         <div className="container">
           <div className="experience-timeline">
             {experiences.map((exp) => (
-              <div key={exp.id} className="experience-item">
+              <div
+                key={exp.id}
+                id={`exp-${exp.id}`}
+                className={`experience-item ${visibleItems.has(`exp-${exp.id}`) ? 'scroll-visible' : 'scroll-hidden'}`}
+              >
                 <div className="experience-dot"></div>
                 <div className="experience-card">
                   <div className="experience-date">{exp.date}</div>

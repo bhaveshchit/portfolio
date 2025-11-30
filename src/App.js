@@ -38,7 +38,7 @@ function App() {
         <Experience />
         <Contact />
         <footer className="footer">
-          <p>&copy; 2025 Bhavesh. Built with ❤️</p>
+          <p>&copy; 2025 Bhavesh. Portfolio Website</p>
         </footer>
       </div>
     </div>

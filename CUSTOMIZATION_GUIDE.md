@@ -29,9 +29,9 @@ Creates optimized build in `build/` folder
 ```javascript
 // Change your name and title
 <h1>
-  Hi, I'm <span className="gradient-text">YOUR_NAME</span>
+  Hi, I'm <span className="gradient-text">Bhavesh</span>
   <br />
-  YOUR_TITLE
+  Software Developer
 </h1>
 
 // Update subtitle
@@ -45,7 +45,7 @@ Creates optimized build in `build/` folder
 </a>
 
 // Update social links (replace URLs)
-<a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
+<a href="https://github.com/bhaveshchit" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">
   𝐺
 </a>
 ```
@@ -119,15 +119,15 @@ const experiences = [
 
 Change the contact links:
 ```javascript
-<a href="mailto:your.email@example.com" className="contact-link">
+<a href="mailto:chittorabhavesh24@gmail.com" className="contact-link">
   <span>📧</span>
-  <span>your.email@example.com</span>
+  <span>chittorabhavesh24@gmail.com</span>
 </a>
 <a href="tel:+1234567890" className="contact-link">
   <span>📱</span>
   <span>+1 (234) 567-890</span>
 </a>
-<a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
+<a href="https://www.linkedin.com/in/bhavesh-chittora-04634823a/" target="_blank" rel="noopener noreferrer" className="contact-link">
   <span>💼</span>
   <span>LinkedIn</span>
 </a>
@@ -137,7 +137,7 @@ Change the contact links:
 **File:** `public/index.html`
 
 ```html
-<title>Your Name - Your Title</title>
+<title>Bhavesh Chittora - Software Developer</title>
 <meta name="description" content="Your professional summary...">
 ```
 

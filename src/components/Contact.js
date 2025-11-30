@@ -30,8 +30,8 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="section">
-      <h2 className="section-title">Get In Touch</h2>
+    <section id="contact" className="section" data-scroll-animation="fadeInUp">
+      <h2 className="section-title" data-scroll-animation="fadeInUp">Get In Touch</h2>
       <div className="contact-container">
         <p className="contact-description">
           I'm always interested in hearing about new projects and opportunities.
@@ -96,15 +96,15 @@ function Contact() {
         </form>
 
         <div className="contact-links">
-          <a href="mailto:your.email@example.com" className="contact-link">
+          <a href="mailto:chittorabhavesh24@gmail.com" className="contact-link">
             <span>📧</span>
-            <span>your.email@example.com</span>
+            <span>chittorabhavesh24@gmail.com</span>
           </a>
           <a href="tel:+1234567890" className="contact-link">
             <span>📱</span>
-            <span>+1 (234) 567-890</span>
+            <span>+91-8824991267</span>
           </a>
-          <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="contact-link">
+          <a href="https://www.linkedin.com/in/bhavesh-chittora-04634823a/" target="_blank" rel="noopener noreferrer" className="contact-link">
             <span>💼</span>
             <span>LinkedIn</span>
           </a>

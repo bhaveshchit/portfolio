@@ -3,8 +3,8 @@ import './About.css';
 
 function About() {
   return (
-    <section id="about" className="section">
-      <h2 className="section-title">About Me</h2>
+    <section id="about" className="section" data-scroll-animation="fadeInUp">
+      <h2 className="section-title" data-scroll-animation="fadeInUp">About Me</h2>
       <div className="container">
         <div className="about">
           <div className="about-image">

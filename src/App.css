@@ -1180,3 +1180,69 @@ html {
     display: none;
   }
 }
+
+/* ============================================
+   EXPERIENCE SCROLL ANIMATIONS
+   ============================================ */
+
+/* Initial hidden state for experience items */
+.experience-item.scroll-hidden {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(-45deg) translateX(-100px) scale(0.8);
+}
+
+/* Visible state - triggered on scroll */
+.experience-item.scroll-visible {
+  animation: popupFromLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Popup from left animation with 3D effect */
+@keyframes popupFromLeft {
+  0% {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-45deg) translateX(-100px) scale(0.8);
+    box-shadow: -20px 20px 40px rgba(0, 0, 0, 0);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-10deg) translateX(-20px) scale(0.95);
+    box-shadow: -10px 10px 30px rgba(99, 102, 241, 0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0) scale(1);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+  }
+}
+
+/* Staggered animation delays */
+.experience-item:nth-child(1).scroll-visible {
+  animation-delay: 0s;
+}
+
+.experience-item:nth-child(2).scroll-visible {
+  animation-delay: 0.2s;
+}
+
+.experience-item:nth-child(3).scroll-visible {
+  animation-delay: 0.4s;
+}
+
+/* Mobile version - simpler animation */
+@media (max-width: 768px) {
+  .experience-item.scroll-hidden {
+    opacity: 0;
+    transform: translateX(-50px) rotateY(-20deg) scale(0.9);
+  }
+
+  @keyframes popupFromLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px) rotateY(-20deg) scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0) scale(1);
+    }
+  }
+}
+
