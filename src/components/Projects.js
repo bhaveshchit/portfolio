@@ -24,7 +24,7 @@ function Projects() {
         </>
       ),
       tags: ['React', 'Node.js', 'MongoDB', 'Payments'],
-      icon: '🏠'
+      icon: '🏢'
     },
     {
       id: 2,
@@ -47,7 +47,7 @@ function Projects() {
         </>
       ),
       tags: ['React', 'Node.js', 'MongoDB', 'Authentication'],
-      icon: '📝'
+      icon: '✍️'
     },
     {
       id: 3,
@@ -71,7 +71,7 @@ function Projects() {
         </>
       ),
       tags: ['React', 'Node.js', 'Stripe', 'MongoDB'],
-      icon: '🛍️'
+      icon: '🛒'
     },
     {
       id: 4,
@@ -95,7 +95,7 @@ function Projects() {
         </>
       ),
       tags: ['Node.js', 'MongoDB', 'Express', 'Payments'],
-      icon: '🍔'
+      icon: '🍕'
     },
     {
       id: 5,
@@ -119,7 +119,7 @@ function Projects() {
         </>
       ),
       tags: ['Node.js', 'MongoDB', 'Analytics', 'Express'],
-      icon: '📊'
+      icon: '📈'
     },
     {
       id: 6,
@@ -143,7 +143,7 @@ function Projects() {
         </>
       ),
       tags: ['Payment Gateway', 'Node.js', 'Security', 'Crypto'],
-      icon: '💳'
+      icon: '💰'
     },
     {
       id: 7,
@@ -167,7 +167,7 @@ function Projects() {
         </>
       ),
       tags: ['React', 'Node.js', 'MongoDB', 'Analytics'],
-      icon: '📢'
+      icon: '📣'
     },
     {
       id: 8,
@@ -191,7 +191,7 @@ function Projects() {
         </>
       ),
       tags: ['React', 'Blockchain', 'Crypto', 'Node.js'],
-      icon: '₿'
+      icon: '🪙'
     }
   ];
 

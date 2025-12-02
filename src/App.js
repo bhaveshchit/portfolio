@@ -10,7 +10,6 @@ import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Navigation from './components/Navigation';
-import Creature from './components/Creature';
 import CursorBlast from './components/CursorBlast';
 import CustomCursor from './components/CustomCursor';
 
@@ -28,7 +27,6 @@ function App() {
   <BackgroundMusic />
   <CustomCursor />
   <CursorBlast />
-  <Creature />
       <div style={{ position: 'relative', zIndex: 10 }}>
         <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Hero />
