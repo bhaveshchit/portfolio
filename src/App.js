@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Hero from './components/Hero';
 import Background3D from './components/Background3D';
@@ -15,6 +15,10 @@ import CustomCursor from './components/CustomCursor';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+
+  useEffect(() => {
+    document.body.className = darkMode ? 'dark' : 'light';
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);

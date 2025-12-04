@@ -44,7 +44,7 @@ export function DrawerContent({ children, onClose }) {
       justifyContent: 'flex-end',
     }} onClick={onClose}>
       <div style={{
-        background: 'var(--dark-card, #fff)',
+        background: 'var(--drawer-bg)',
         minWidth: 260,
         maxWidth: 340,
         width: '80vw',
@@ -54,7 +54,7 @@ export function DrawerContent({ children, onClose }) {
         position: 'relative',
         animation: 'slideInRight 0.3s cubic-bezier(.4,0,.2,1)',
       }} onClick={e => e.stopPropagation()}>
-        <button onClick={onClose} style={{position:'absolute',top:12,right:12,fontSize:24,background:'none',border:'none',cursor:'pointer'}}>×</button>
+        <button onClick={onClose} style={{position:'absolute',top:12,right:12,fontSize:24,background:'none',border:'none',cursor:'pointer', color: 'var(--drawer-text)'}}>×</button>
         {children}
       </div>
     </div>

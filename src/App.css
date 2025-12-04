@@ -1648,3 +1648,28 @@ html {
   }
 }
 
+/* ============================================
+   DRAWER STYLES
+   ============================================ */
+
+body.dark {
+  --drawer-bg: #111827;
+  --drawer-text: #FFFFFF;
+}
+
+body.light {
+  --drawer-bg: #ffffff;
+  --drawer-text: #000000;
+}
+
+body .nav-mobile .nav-link {
+  color: var(--drawer-text);
+}
+
+body.dark .nav-mobile .nav-link:hover {
+  color: var(--primary-color-dark);
+}
+
+body.light .nav-mobile .nav-link:hover {
+  color: var(--primary-color-light);
+}
