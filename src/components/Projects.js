@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
+import Project3D from './Project3D';
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+
+  const projectGraphics = [
+    { shape: 'icosahedron', color: 0x6366f1, animationSpeed: 1 },
+    { shape: 'box', color: 0xec4899, animationSpeed: 0.8 },
+    { shape: 'torus', color: 0x10b981, animationSpeed: 1.2 },
+    { shape: 'dodecahedron', color: 0xf59e0b, animationSpeed: 0.9 },
+    { shape: 'icosahedron', color: 0x3b82f6, animationSpeed: 1.1 },
+    { shape: 'box', color: 0x8b5cf6, animationSpeed: 1 },
+    { shape: 'torus', color: 0xef4444, animationSpeed: 0.7 },
+    { shape: 'dodecahedron', color: 0x6ee7b7, animationSpeed: 1.3 },
+  ];
 
   const projects = [
     {
@@ -201,14 +213,16 @@ function Projects() {
         <h2 className="section-title">Featured Projects</h2>
         <div className="container">
           <div className="projects-grid">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <div
                 key={project.id}
                 className="project-card"
                 onClick={() => setSelectedProject(project)}
                 style={{ cursor: 'pointer' }}
               >
-                <div className="project-image">{project.icon}</div>
+                <div className="project-image">
+                  <Project3D {...projectGraphics[index % projectGraphics.length]} />
+                </div>
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
                   <p className="project-description">{project.shortDescription}</p>
@@ -232,7 +246,9 @@ function Projects() {
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal-glass-card" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setSelectedProject(null)}>✕</button>
-            <div className="modal-project-icon">{selectedProject.icon}</div>
+            <div className="modal-project-icon">
+              <Project3D {...projectGraphics[(selectedProject.id - 1) % projectGraphics.length]} />
+            </div>
             <h2 className="modal-title">{selectedProject.title}</h2>
             <div className="modal-content">
               {selectedProject.fullDescription}
