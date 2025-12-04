@@ -23,3 +23,14 @@
 .gradient-text {
   animation: shine 3s ease-in-out infinite;
 }
+
+.hero-image {
+  width: 200px; /* Adjust as needed */
+  height: 200px; /* Adjust as needed */
+  border-radius: 50%; /* Makes the image round */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  margin-top: 2rem; /* Adds some space above the image */
+  border: 3px solid var(--color-primary); /* Example border */
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Example shadow */
+}
+
