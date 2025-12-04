@@ -1571,6 +1571,16 @@ html {
   .nav-menu {
     display: none;
   }
+
+  .projects-grid {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  .project-card {
+    max-width: 340px;
+    width: 100%;
+  }
 }
 
 /* ============================================
