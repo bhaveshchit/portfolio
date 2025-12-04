@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './About.css';
+import About3D from './About3D';
 
 function About() {
   const [showFullBio, setShowFullBio] = useState(false);
@@ -10,9 +11,8 @@ function About() {
         <div className="about-container">
           <div className="about-profile">
             <div className="profile-picture-container">
-              {/* Placeholder for profile picture */}
               <div className="profile-picture">
-                <span className="profile-initials">BC</span>
+                <About3D />
               </div>
             </div>
             <div className="profile-social-links">

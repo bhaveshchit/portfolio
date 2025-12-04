@@ -38,13 +38,9 @@
   border: 3px solid var(--dark-bg);
 }
 
-.profile-initials {
-  font-size: 48px;
-  font-weight: bold;
-  color: var(--primary-color);
-  background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.profile-picture canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .profile-social-links {
