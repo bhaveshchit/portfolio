@@ -1,19 +1,24 @@
 import React from 'react';
 import './Hero.css';
-import Project3D from './Project3D';
+import useTypewriter from '../hooks/useTypewriter';
 
 function Hero() {
+  const nameText = useTypewriter("Hi, I'm Bhavesh", 100);
+  const titleText = useTypewriter("Software Developer & Designer", 80);
+  const subtitleText = useTypewriter("I create beautiful, responsive, and performant web applications with modern technologies. Passionate about clean code and user experience.", 50);
+
   return (
     <section className="hero section">
       <div className="hero-content">
         <h1>
-          Hi, I'm <span className="gradient-text">Bhavesh</span>
+          {nameText.split("Bhavesh")[0]}
+          <span className="gradient-text">Bhavesh</span>
+          {nameText.split("Bhavesh")[1]}
           <br />
-          Software Developer & Designer
+          {titleText}
         </h1>
         <p className="hero-subtitle">
-          I create beautiful, responsive, and performant web applications with modern
-          technologies. Passionate about clean code and user experience.
+          {subtitleText}
         </p>
         <div className="hero-buttons">
           <a href="#projects" className="btn btn-primary">
@@ -34,9 +39,6 @@ function Hero() {
             ✉
           </a>
         </div>
-      </div>
-      <div className="hero-canvas">
-        <Project3D shape="icosahedron" color={0x6366f1} animationSpeed={1} />
       </div>
     </section>
   );
