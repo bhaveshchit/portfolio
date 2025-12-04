@@ -23,7 +23,7 @@ function App() {
   return (
     <div className={`app ${darkMode ? 'dark' : 'light'}`} style={{ position: 'relative', minHeight: '100vh' }}>
   <ShootingStars active={darkMode} />
-  <Background3D />
+  <Background3D darkMode={darkMode} />
   <BackgroundMusic />
   <CustomCursor />
   <CursorBlast />

@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
-function Background3D() {
+function Background3D({ darkMode }) {
   const bgRef = useRef(null);
+  const shapesRef = useRef([]);
 
   useEffect(() => {
     if (!bgRef.current) return;
@@ -152,6 +153,7 @@ function Background3D() {
       scene.add(point);
       shapes.push({ mesh: point, type: 'point', phase: Math.random() * Math.PI * 2 });
     }
+    shapesRef.current = shapes;
     // Lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
@@ -237,6 +239,13 @@ function Background3D() {
       lineMaterial.dispose();
     };
   }, []);
+
+  useEffect(() => {
+    const newColor = darkMode ? 0xffffff : 0x000000;
+    shapesRef.current.forEach(shape => {
+      shape.mesh.material.color.setHex(newColor);
+    });
+  }, [darkMode]);
 
   return (
     <div ref={bgRef} style={{
