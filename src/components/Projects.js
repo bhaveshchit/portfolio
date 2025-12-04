@@ -245,10 +245,10 @@ function Projects() {
       {selectedProject && (
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal-glass-card" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedProject(null)}>✕</button>
-            <div className="modal-project-icon">
+            <div className="modal-background-3d">
               <Project3D {...projectGraphics[(selectedProject.id - 1) % projectGraphics.length]} />
             </div>
+            <button className="modal-close" onClick={() => setSelectedProject(null)}>✕</button>
             <h2 className="modal-title">{selectedProject.title}</h2>
             <div className="modal-content">
               {selectedProject.fullDescription}

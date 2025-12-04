@@ -138,7 +138,7 @@ html {
 .section {
   padding: 80px 20px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto 80px auto; /* Added margin-bottom */
   animation: fadeInUp 0.8s ease-out;
 }
 
@@ -1040,31 +1040,23 @@ html {
    PROJECT MODAL
    ============================================ */
 
-.modal-project-icon {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 15px;
-  animation: iconBounce 0.6s ease-out;
+.modal-background-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind other content */
+  opacity: 0.1; /* Make it subtle */
+  filter: blur(5px); /* Blur it slightly */
 }
 
-.app.dark .modal-project-icon {
-  color: white;
-}
-
-.app.light .modal-project-icon {
-  color: black;
-}
-
-@keyframes iconBounce {
-  0% {
-    transform: scale(0) rotateZ(-180deg);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1) rotateZ(0deg);
-  }
+.modal-close,
+.modal-title,
+.modal-content,
+.project-modal-tags {
+  position: relative; /* Ensure these are above the background */
+  z-index: 1;
 }
 
 .project-modal-tags {
@@ -1288,7 +1280,7 @@ html {
   max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  position: relative;
+  position: relative; /* Needed for absolute positioning of children */
   animation: slideUp 0.3s ease-out;
 }
 
@@ -1558,6 +1550,7 @@ html {
 @media (max-width: 768px) {
   .section {
     padding: 60px 20px;
+    margin-bottom: 60px; /* Added margin-bottom for mobile */
   }
 
   .section-title {
