@@ -37,8 +37,7 @@ function Background3D() {
     const shapes = [];
     const nodeGeometry = new THREE.OctahedronGeometry(0.4, 1);
     for (let i = 0; i < 12; i++) {
-      const mat = new THREE.MeshPhongMaterial({ color: 0x6366f1 });
-      mat.emissive.setHex(0x3b4bd4);
+      const mat = new THREE.MeshPhongMaterial({ color: 0xffffff });
       mat.transparent = true;
       mat.opacity = 0.8;
       const node = new THREE.Mesh(nodeGeometry, mat);
@@ -57,8 +56,7 @@ function Background3D() {
       const matrix = new THREE.Mesh(
         matrixGeometry,
         new THREE.MeshPhongMaterial({ 
-          color: 0xec4899, 
-          emissive: 0xa81e64, 
+          color: 0xffffff, 
           shininess: 100, 
           transparent: true, 
           opacity: 0.6,
@@ -87,18 +85,16 @@ function Background3D() {
       );
     }
     lineGeometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
-    const lineMaterial = new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.3, linewidth: 2 });
+    const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.3, linewidth: 2 });
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
     scene.add(lines);
     shapes.push({ mesh: lines, type: 'lines', phase: 0 });
 
     // Keyboard buttons (small cubes)
     const buttonGeometry = new THREE.BoxGeometry(0.25, 0.25, 0.15);
-    const keyboardButtons = ['&lt;', '&gt;', '{', '}', '[ ]', '( )', '/* */', '=&gt;'];
     for (let i = 0; i < 8; i++) {
       const buttonMat = new THREE.MeshPhongMaterial({
-        color: 0xf59e0b,
-        emissive: 0xd97706,
+        color: 0xffffff,
         transparent: true,
         opacity: 0.7,
         shininess: 60
@@ -120,8 +116,7 @@ function Background3D() {
     const symbolGeometry = new THREE.TetrahedronGeometry(0.3, 0);
     for (let i = 0; i < 6; i++) {
       const symbolMat = new THREE.MeshPhongMaterial({
-        color: 0x06b6d4,
-        emissive: 0x0891b2,
+        color: 0xffffff,
         transparent: true,
         opacity: 0.65,
         shininess: 80
@@ -143,8 +138,7 @@ function Background3D() {
     const pointGeometry = new THREE.SphereGeometry(0.15, 16, 16);
     for (let i = 0; i < 10; i++) {
       const pointMat = new THREE.MeshPhongMaterial({
-        color: 0x8b5cf6,
-        emissive: 0x7c3aed,
+        color: 0xffffff,
         transparent: true,
         opacity: 0.8,
         shininess: 100
@@ -214,7 +208,7 @@ function Background3D() {
         } else if (obj.type === 'point') {
           // Tech points bob gently and pulse
           obj.mesh.position.y += Math.sin(t * 0.6 + obj.phase + i) * 0.006;
-          obj.mesh.position.x += Math.cos(t * 0.5 + obj.phase + i) * 0.004;
+          obj.mesh.position.x += Math.cos(t * .5 + obj.phase + i) * 0.004;
           obj.mesh.position.z += Math.sin(t * 0.7 + obj.phase + i) * 0.005;
           obj.mesh.material.opacity = 0.8 + 0.15 * Math.sin(t * 1.2 + obj.phase);
           obj.mesh.scale.x = 1 + 0.1 * Math.sin(t + obj.phase);
