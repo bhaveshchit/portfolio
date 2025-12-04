@@ -30,7 +30,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: var(--dark-card); /* Or a placeholder image */
+  background-color: transparent; /* Or a placeholder image */
   display: flex;
   align-items: center;
   justify-content: center;
