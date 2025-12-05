@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
@@ -13,6 +13,28 @@ function Skills3D({ skillsCategories }) {
   const mouseRef = useRef(new THREE.Vector2());
   const intersectedRef = useRef(null);
   const originalColorsRef = useRef(new Map());
+
+  const [tooltip, setTooltip] = useState({
+    visible: false,
+    content: '',
+    x: 0,
+    y: 0,
+  });
+
+  // Store mouse client coordinates for tooltip positioning
+  const mouseClientCoords = useRef({ x: 0, y: 0 });
+
+  const handleMouseMove = useCallback((event) => {
+    const currentMount = mountRef.current;
+    if (currentMount) {
+      const rect = currentMount.getBoundingClientRect();
+      mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseRef.current.y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
+
+      // Store client coordinates directly for tooltip
+      mouseClientCoords.current = { x: event.clientX, y: event.clientY };
+    }
+  }, []);
 
   useEffect(() => {
     const currentMount = mountRef.current;
@@ -99,8 +121,14 @@ function Skills3D({ skillsCategories }) {
             originalColorsRef.current.set(intersectedRef.current.uuid, intersectedRef.current.material.color.getHex());
             intersectedRef.current.material.color.setHex(0xff0000); // Highlight color
             document.body.style.cursor = 'pointer';
-            // Optionally display skill name/proficiency
-            console.log('Hovered:', intersectedRef.current.userData.skill.name, intersectedRef.current.userData.skill.proficiency);
+            // Display skill name/proficiency in tooltip
+            const skillData = intersectedRef.current.userData.skill;
+            setTooltip({
+              visible: true,
+              content: `${skillData.name} (${skillData.proficiency}%)`,
+              x: mouseClientCoords.current.x,
+              y: mouseClientCoords.current.y,
+            });
           }
         } else {
           if (intersectedRef.current) {
@@ -111,6 +139,7 @@ function Skills3D({ skillsCategories }) {
           }
           intersectedRef.current = null;
           document.body.style.cursor = 'auto';
+          setTooltip(prev => ({ ...prev, visible: false }));
         }
       }
 
@@ -129,13 +158,6 @@ function Skills3D({ skillsCategories }) {
     window.addEventListener('resize', handleResize);
 
     // Handle Mouse Move for Raycasting
-    const handleMouseMove = (event) => {
-      if (currentMount) {
-        const rect = currentMount.getBoundingClientRect();
-        mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-        mouseRef.current.y = -(((event.clientY - rect.top) / rect.height) * 2 - 1);
-      }
-    };
     currentMount.addEventListener('mousemove', handleMouseMove);
 
     // Cleanup
@@ -153,7 +175,7 @@ function Skills3D({ skillsCategories }) {
         if (child.material) child.material.dispose();
       });
     };
-  }, [skillsCategories]);
+  }, [skillsCategories, handleMouseMove, setTooltip]);
 
   return (
     <div
@@ -164,7 +186,19 @@ function Skills3D({ skillsCategories }) {
         position: 'relative',
         overflow: 'hidden',
       }}
-    ></div>
+    >
+      {tooltip.visible && (
+        <div
+          className="skill-tooltip"
+          style={{
+            left: tooltip.x,
+            top: tooltip.y,
+          }}
+        >
+          {tooltip.content}
+        </div>
+      )}
+    </div>
   );
 }
 

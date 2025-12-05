@@ -111,11 +111,9 @@ function Skills() {
           </div>
         ))}
       </div>
-      {/* The 3D skills component can be placed here if desired,
-          but for now, we prioritize the visible list. */}
-      {/* <div className="skills-3d-container">
+      <div className="skills-3d-container">
         <Skills3D skillsCategories={skillsCategories} />
-      </div> */}
+      </div>
     </section>
   );
 }
