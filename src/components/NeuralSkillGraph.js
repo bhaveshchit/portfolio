@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './NeuralSkillGraph.css'; // CSS for this component
 
-const NeuralSkillGraph = ({ skills, darkMode }) => {
+const NeuralSkillGraph = ({ skills, darkMode, onClose }) => {
   const graphRef = useRef(null);
   const [positions, setPositions] = useState([]);
 
@@ -22,24 +22,31 @@ const NeuralSkillGraph = ({ skills, darkMode }) => {
   }, [skills]);
 
   return (
-    <div ref={graphRef} className="neural-skill-graph">
-      {skills.map((skill, index) => (
-        <div
-          key={skill.name}
-          className="skill-node"
-          style={{
-            left: positions[index]?.x,
-            top: positions[index]?.y,
-            borderColor: darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
-            backgroundColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
-            color: darkMode ? 'var(--dark-text)' : 'var(--light-text)',
-            animationDelay: `${index * 0.1}s` // Staggered animation
-          }}
-        >
-          <span className="node-icon">{skill.icon}</span>
-          <span className="node-name">{skill.name}</span>
+    <div className="neural-graph-modal-overlay">
+      <div className="neural-graph-modal-content">
+        <button className="neural-graph-close-button" onClick={onClose}>
+          &times; {/* Multiplication sign for a cross icon */}
+        </button>
+        <div ref={graphRef} className="neural-skill-graph">
+          {skills.map((skill, index) => (
+            <div
+              key={skill.name}
+              className="skill-node"
+              style={{
+                left: positions[index]?.x,
+                top: positions[index]?.y,
+                borderColor: darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
+                backgroundColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
+                color: darkMode ? 'var(--dark-text)' : 'var(--light-text)',
+                animationDelay: `${index * 0.1}s` // Staggered animation
+              }}
+            >
+              <span className="node-icon">{skill.icon}</span>
+              <span className="node-name">{skill.name}</span>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 };

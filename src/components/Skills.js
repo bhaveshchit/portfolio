@@ -99,6 +99,10 @@ function Skills({ darkMode }) {
     setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
+  const handleCloseNeuralGraph = () => {
+    setActiveCategory(null);
+  };
+
   return (
     <section id="skills" className="section skills-section">
       <Background3D darkMode={darkMode} /> {/* General 3D background for the section */}
@@ -111,12 +115,16 @@ function Skills({ darkMode }) {
             onClick={() => handleCategoryClick(category.id)}
           >
             <h3>{category.icon} {category.category}</h3>
-            {activeCategory === category.id && (
-              <NeuralSkillGraph skills={category.skills} darkMode={darkMode} />
-            )}
           </div>
         ))}
       </div>
+      {activeCategory !== null && (
+        <NeuralSkillGraph
+          skills={skillsCategories.find(cat => cat.id === activeCategory).skills}
+          darkMode={darkMode}
+          onClose={handleCloseNeuralGraph}
+        />
+      )}
     </section>
   );
 }
