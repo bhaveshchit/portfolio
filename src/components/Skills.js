@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Background3D from './Background3D'; // Import the 3D background component
+import SkillCard3DBackground from './SkillCard3DBackground'; // Import the new 3D background component for cards
 import './Skills.css'; // Assuming you'll create a CSS file for Skills
 
 function Skills({ darkMode }) { // Accept darkMode prop
@@ -104,13 +104,13 @@ function Skills({ darkMode }) { // Accept darkMode prop
 
   return (
     <section id="skills" className="section skills-section">
-      <Background3D darkMode={darkMode} /> {/* 3D background component */}
       <h2 className="section-title">Skills & Technologies</h2>
       <div className="skills-container">
         {skillsCategories.map(category => {
           const isCategoryOpen = openCategories.includes(category.id);
           return (
             <div key={category.id} className="skill-category">
+              <SkillCard3DBackground darkMode={darkMode} /> {/* 3D background for each card */}
               <div className="category-header" onClick={() => toggleCategory(category.id)}>
                 <h3>{category.icon} {category.category}</h3>
                 <span className={`category-toggle ${isCategoryOpen ? 'expanded' : ''}`}>
