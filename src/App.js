@@ -35,7 +35,7 @@ function App() {
         <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Hero />
         <About />
-        <Skills />
+        <Skills darkMode={darkMode} />
         <Projects />
         <Experience />
         <Contact />
