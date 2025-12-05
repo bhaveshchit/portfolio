@@ -1,0 +1,87 @@
+/* src/components/NeuralSkillGraph.css */
+
+.neural-skill-graph {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through to elements below */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  border-radius: 15px; /* Rounded corners for node */
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  pointer-events: auto; /* Make nodes clickable/hoverable */
+  opacity: 0;
+  animation: fadeInNode 0.5s forwards;
+}
+
+.app.dark .skill-node {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  color: var(--dark-text);
+}
+
+.app.light .skill-node {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: var(--light-text);
+}
+
+.skill-node:hover {
+  transform: scale(1.1) translateY(-5px);
+  z-index: 10; /* Bring hovered node to front */
+}
+
+.app.dark .skill-node:hover {
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+}
+
+.app.light .skill-node:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.node-icon {
+  font-size: 2em;
+  margin-bottom: 5px;
+}
+
+.node-name {
+  font-size: 0.9em;
+  text-align: center;
+  font-weight: 600;
+}
+
+@keyframes fadeInNode {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skill-node {
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
+  .node-icon {
+    font-size: 1.5em;
+  }
+}

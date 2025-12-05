@@ -2,230 +2,95 @@
 
 .skills-section {
   /* Inherit padding, max-width, margin from global .section in App.css */
-  /* background-color: transparent; */ /* Handled by App.css .app.dark/light */
-  /* color: var(--dark-text); */ /* Handled by App.css .app.dark/light */
   text-align: center;
   position: relative; /* Establish positioning context for 3D background */
   overflow: hidden; /* Hide any overflow from 3D background */
 }
 
-/* .section-title is handled by App.css */
-
 .skills-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px; /* Slightly reduced gap for a more compact look */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min-width for category blocks */
+  gap: 25px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative; /* For z-index stacking */
+  z-index: 1; /* Ensure content is above any section-level 3D background */
 }
 
-.skill-category {
+.skill-category-block {
   background: transparent;
-  border-radius: 15px; /* Slightly larger border-radius for a softer look */
-  padding: 0; /* Remove padding from here, it's handled by category-header and skill-list */
-  backdrop-filter: blur(12px); /* Slightly more blur for enhanced glassmorphism */
+  border-radius: 15px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
-}
-
-.app.dark .skill-category {
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Softer border */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
-}
-
-.app.light .skill-category {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
-
-.skill-category:hover {
-  transform: translateY(-8px); /* More pronounced lift on hover */
-}
-
-.app.dark .skill-category:hover {
-  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.app.light .skill-category:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.3);
-}
-
-.skill-category h3 {
-  font-size: 1.6em; /* Slightly smaller heading for minimalism */
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.category-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 25px; /* Increased padding for better touch targets and spacing */
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.app.dark .category-header {
-  color: var(--dark-text);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.app.light .category-header {
-  color: var(--light-text);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.category-header:hover {
-  background-color: rgba(255, 255, 255, 0.08); /* More noticeable hover effect */
-}
-
-.app.light .category-header:hover {
-  background-color: rgba(0, 0, 0, 0.08);
-}
-
-.category-toggle {
-  font-size: 1.1em; /* Slightly smaller toggle icon */
-  transition: transform 0.3s ease;
-}
-
-.category-toggle.expanded {
-  transform: rotate(180deg);
-}
-
-.skill-list {
-  list-style: none;
-  padding: 15px 25px; /* Adjusted padding */
-  margin: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-  max-height: 500px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Smaller min-width for more items per row */
-  gap: 10px; /* Reduced gap */
-}
-
-/* When collapsed, max-height will be 0 */
-.skill-list:not(.expanded) {
-  max-height: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.skill-item {
-  display: flex;
-  flex-direction: column; /* Arrange content vertically */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0;
-  position: relative; /* For positioning the 3D note */
-}
-
-.skill-note-3d {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotateX(15deg) rotateY(-15deg); /* Initial 3D tilt */
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  background: transparent;
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  padding: 10px 15px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  z-index: 2; /* Above skill-content */
-}
-
-.app.dark .skill-note-3d {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  color: var(--dark-text);
-}
-
-.app.light .skill-note-3d {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  color: var(--light-text);
-}
-
-.skill-item:hover .skill-note-3d {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) scale(1.1); /* Pop up effect */
-}
-
-.skill-note-3d p {
-  margin: 0;
-  font-size: 1em;
-  font-weight: 600;
-}
-
-.skill-content {
-  background: transparent;
-  backdrop-filter: blur(10px); /* Enhanced blur for individual skill rectangles */
-  border-radius: 10px; /* Slightly larger border-radius */
-  padding: 12px; /* Adjusted padding */
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px; /* Reduced gap for minimalism */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 150px; /* Ensure blocks have a decent size */
 }
 
-.app.dark .skill-content {
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Softer border */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* More pronounced shadow */
+.app.dark .skill-category-block {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-.app.light .skill-content {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+.app.light .skill-category-block {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
-.skill-content:hover {
-  transform: translateY(-5px); /* More pronounced lift on hover */
+.skill-category-block:hover {
+  transform: translateY(-8px);
 }
 
-.app.dark .skill-content:hover {
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+.app.dark .skill-category-block:hover {
+  box-shadow: 0 12px 40px rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
-.app.light .skill-content:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+.app.light .skill-category-block:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
-.skill-icon {
-  font-size: 1.8em; /* Slightly smaller icon for minimalism */
-  margin-bottom: 3px; /* Reduced margin */
+.skill-category-block.active {
+  /* Styles for active category block */
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--primary-color); /* Highlight active category */
 }
 
-.skill-name {
-  font-size: 0.9em; /* Slightly smaller font size */
-  font-weight: 500; /* Lighter font weight */
+.app.dark .skill-category-block.active {
+  box-shadow: 0 10px 35px rgba(255, 255, 255, 0.3);
 }
 
-.skill-proficiency {
-  font-size: 0.8em; /* Slightly smaller font size */
+.app.light .skill-category-block.active {
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
+.skill-category-block h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.app.dark .skill-category-block h3 {
+  color: var(--dark-text);
+}
+
+.app.light .skill-category-block h3 {
+  color: var(--light-text);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  /* .section-title is handled by App.css */
-
   .skills-container {
     grid-template-columns: 1fr;
   }
 }
-

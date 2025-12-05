@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import SkillCard3DBackground from './SkillCard3DBackground'; // Import the new 3D background component for cards
-import './Skills.css'; // Assuming you'll create a CSS file for Skills
+import Background3D from './Background3D'; // Import the general 3D background component
+import './Skills.css';
+import NeuralSkillGraph from './NeuralSkillGraph'; // New component for the neural node structure
 
-function Skills({ darkMode }) { // Accept darkMode prop
-  const [openCategories, setOpenCategories] = useState([]); // State to manage open/closed categories
+function Skills({ darkMode }) {
+  const [activeCategory, setActiveCategory] = useState(null); // State to manage the active category for the neural graph
 
   const skillsCategories = [
     {
@@ -94,48 +95,27 @@ function Skills({ darkMode }) { // Accept darkMode prop
     },
   ];
 
-  const toggleCategory = (id) => {
-    setOpenCategories(prevOpenCategories =>
-      prevOpenCategories.includes(id)
-        ? prevOpenCategories.filter(categoryId => categoryId !== id)
-        : [...prevOpenCategories, id]
-    );
+  const handleCategoryClick = (categoryId) => {
+    setActiveCategory(activeCategory === categoryId ? null : categoryId);
   };
 
   return (
     <section id="skills" className="section skills-section">
+      <Background3D darkMode={darkMode} /> {/* General 3D background for the section */}
       <h2 className="section-title">Skills & Technologies</h2>
       <div className="skills-container">
-        {skillsCategories.map(category => {
-          const isCategoryOpen = openCategories.includes(category.id);
-          return (
-            <div key={category.id} className="skill-category">
-              <SkillCard3DBackground darkMode={darkMode} /> {/* 3D background for each card */}
-              <div className="category-header" onClick={() => toggleCategory(category.id)}>
-                <h3>{category.icon} {category.category}</h3>
-                <span className={`category-toggle ${isCategoryOpen ? 'expanded' : ''}`}>
-                  &#9660; {/* Down arrow */}
-                </span>
-              </div>
-              <ul className={`skill-list ${isCategoryOpen ? 'expanded' : ''}`}>
-                {category.skills.map((skill, index) => (
-                  <li key={index} className="skill-item">
-                    <div className="skill-content">
-                      <span className="skill-icon">{skill.icon}</span>
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-proficiency">{skill.proficiency}%</span>
-                    </div>
-                    {isCategoryOpen && ( // Conditionally render the 3D note
-                      <div className="skill-note-3d">
-                        <p>{skill.name}</p>
-                      </div>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          );
-        })}
+        {skillsCategories.map(category => (
+          <div
+            key={category.id}
+            className={`skill-category-block ${activeCategory === category.id ? 'active' : ''}`}
+            onClick={() => handleCategoryClick(category.id)}
+          >
+            <h3>{category.icon} {category.category}</h3>
+            {activeCategory === category.id && (
+              <NeuralSkillGraph skills={category.skills} darkMode={darkMode} />
+            )}
+          </div>
+        ))}
       </div>
     </section>
   );
