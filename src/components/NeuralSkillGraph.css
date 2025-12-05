@@ -6,130 +6,93 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8); /* Darker overlay for "other dimension" */
-  backdrop-filter: blur(20px); /* More pronounced blur */
+  background: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  backdrop-filter: blur(10px); /* Glassmorphism effect for the overlay */
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000; /* Ensure it covers everything */
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
   opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.neural-graph-modal-overlay.active {
-  opacity: 1;
-  visibility: visible;
+  animation: fadeIn 0.3s forwards;
 }
 
 .neural-graph-modal-content {
   position: relative;
   width: 90%;
   height: 90%;
-  max-width: 1400px;
-  max-height: 800px;
-  background: transparent; /* Transparent background for the content area */
+  background: rgba(255, 255, 255, 0.05); /* Slightly visible background for the modal content */
   border-radius: 20px;
-  backdrop-filter: blur(15px); /* Glassmorphism for the content area */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden; /* Hide overflow from nodes */
-  transform: scale(0.8);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.neural-graph-modal-overlay.active .neural-graph-modal-content {
-  transform: scale(1);
-  opacity: 1;
-}
-
-.app.dark .neural-graph-modal-content {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
-}
-
-.app.light .neural-graph-modal-content {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  overflow: hidden; /* Keep nodes within bounds */
 }
 
 .neural-graph-close-button {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
-  font-size: 2.5em;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
-  z-index: 1001; /* Ensure it's above everything */
-}
-
-.app.dark .neural-graph-close-button {
+  border-radius: 50%;
   color: white;
-}
-
-.app.light .neural-graph-close-button {
-  color: black;
+  font-size: 1.5em;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 1001; /* Above modal content */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .neural-graph-close-button:hover {
-  transform: rotate(90deg) scale(1.1);
-  color: var(--primary-color); /* Highlight on hover */
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
 }
 
 .neural-skill-graph {
-  position: relative; /* Changed from absolute to relative */
+  position: relative;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .skill-node {
   position: absolute;
+  width: 120px; /* Increased size for better visibility of text */
+  height: 120px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 10px 15px;
-  border-radius: 15px;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-  pointer-events: auto;
-  opacity: 0;
-  animation: fadeInNode 0.5s forwards;
-  animation-fill-mode: backwards; /* Ensure initial state is respected */
-}
-
-.app.dark .skill-node {
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  color: var(--dark-text);
-}
-
-.app.light .skill-node {
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  color: var(--light-text);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  opacity: 0;
+  animation: nodeAppear 0.5s forwards;
+  animation-delay: var(--animation-delay, 0s); /* Use CSS variable for staggered animation */
 }
 
 .skill-node:hover {
   transform: scale(1.1) translateY(-5px);
-  z-index: 10;
-}
-
-.app.dark .skill-node:hover {
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-}
-
-.app.light .skill-node:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
 .node-icon {
@@ -138,15 +101,37 @@
 }
 
 .node-name {
-  font-size: 0.9em;
-  text-align: center;
-  font-weight: 600;
+  color: white; /* Ensure text is visible on dark background */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes fadeInNode {
+/* Dark mode adjustments for nodes */
+.app.dark .skill-node {
+  color: var(--dark-text);
+}
+
+.app.light .skill-node {
+  color: var(--light-text);
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.app.light .node-name {
+  color: black;
+  text-shadow: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes nodeAppear {
   from {
     opacity: 0;
-    transform: scale(0.8) translateY(20px);
+    transform: scale(0.5) translateY(20px);
   }
   to {
     opacity: 1;
@@ -160,10 +145,13 @@
     width: 95%;
     height: 95%;
   }
+
   .skill-node {
-    padding: 8px 12px;
-    font-size: 0.9em;
+    width: 90px;
+    height: 90px;
+    font-size: 0.7em;
   }
+
   .node-icon {
     font-size: 1.5em;
   }

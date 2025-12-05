@@ -105,7 +105,8 @@ function Skills({ darkMode }) {
 
   return (
     <section id="skills" className="section skills-section">
-      <Background3D darkMode={darkMode} /> {/* General 3D background for the section */}
+      {/* Background3D provides a general 3D background for the entire section */}
+      <Background3D darkMode={darkMode} />
       <h2 className="section-title">Skills & Technologies</h2>
       <div className="skills-container">
         {skillsCategories.map(category => (

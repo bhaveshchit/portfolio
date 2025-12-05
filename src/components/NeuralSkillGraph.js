@@ -38,7 +38,7 @@ const NeuralSkillGraph = ({ skills, darkMode, onClose }) => {
                 borderColor: darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.2)',
                 backgroundColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)',
                 color: darkMode ? 'var(--dark-text)' : 'var(--light-text)',
-                animationDelay: `${index * 0.1}s` // Staggered animation
+                '--animation-delay': `${index * 0.1}s` // Staggered animation
               }}
             >
               <span className="node-icon">{skill.icon}</span>
