@@ -119,10 +119,54 @@
 
 .skill-item {
   display: flex;
+  flex-direction: column; /* Arrange content vertically */
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 0;
+  position: relative; /* For positioning the 3D note */
+}
+
+.skill-note-3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(15deg) rotateY(-15deg); /* Initial 3D tilt */
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 10px 15px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 2; /* Above skill-content */
+}
+
+.app.dark .skill-note-3d {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  color: var(--dark-text);
+}
+
+.app.light .skill-note-3d {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  color: var(--light-text);
+}
+
+.skill-item:hover .skill-note-3d {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) rotateX(0deg) rotateY(0deg) scale(1.1); /* Pop up effect */
+}
+
+.skill-note-3d p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 .skill-content {

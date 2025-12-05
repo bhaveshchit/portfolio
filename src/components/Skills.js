@@ -125,6 +125,11 @@ function Skills({ darkMode }) { // Accept darkMode prop
                       <span className="skill-name">{skill.name}</span>
                       <span className="skill-proficiency">{skill.proficiency}%</span>
                     </div>
+                    {isCategoryOpen && ( // Conditionally render the 3D note
+                      <div className="skill-note-3d">
+                        <p>{skill.name}</p>
+                      </div>
+                    )}
                   </li>
                 ))}
               </ul>
