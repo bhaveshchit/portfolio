@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import Background3D from './Background3D'; // Import the 3D background component
 import './Skills.css'; // Assuming you'll create a CSS file for Skills
 
-function Skills() {
+function Skills({ darkMode }) { // Accept darkMode prop
   const [openCategories, setOpenCategories] = useState([]); // State to manage open/closed categories
 
   const skillsCategories = [
@@ -103,30 +104,33 @@ function Skills() {
 
   return (
     <section id="skills" className="section skills-section">
+      <Background3D darkMode={darkMode} /> {/* 3D background component */}
       <h2 className="section-title">Skills & Technologies</h2>
       <div className="skills-container">
-        {skillsCategories.map(category => (
-          <div key={category.id} className="skill-category">
-            <div className="category-header" onClick={() => toggleCategory(category.id)}>
-              <h3>{category.icon} {category.category}</h3>
-              <span className={`category-toggle ${openCategories.includes(category.id) ? 'expanded' : ''}`}>
-                {/* You can use an SVG icon here, e.g., an arrow */}
-                &#9660; {/* Down arrow */}
-              </span>
-            </div>
-            {openCategories.includes(category.id) && (
-              <ul className="skill-list">
+        {skillsCategories.map(category => {
+          const isCategoryOpen = openCategories.includes(category.id);
+          return (
+            <div key={category.id} className="skill-category">
+              <div className="category-header" onClick={() => toggleCategory(category.id)}>
+                <h3>{category.icon} {category.category}</h3>
+                <span className={`category-toggle ${isCategoryOpen ? 'expanded' : ''}`}>
+                  &#9660; {/* Down arrow */}
+                </span>
+              </div>
+              <ul className={`skill-list ${isCategoryOpen ? 'expanded' : ''}`}>
                 {category.skills.map((skill, index) => (
                   <li key={index} className="skill-item">
-                    <span className="skill-icon">{skill.icon}</span>
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-proficiency">{skill.proficiency}%</span>
+                    <div className="skill-content">
+                      <span className="skill-icon">{skill.icon}</span>
+                      <span className="skill-name">{skill.name}</span>
+                      <span className="skill-proficiency">{skill.proficiency}%</span>
+                    </div>
                   </li>
                 ))}
               </ul>
-            )}
-          </div>
-        ))}
+            </div>
+          );
+        })}
       </div>
     </section>
   );
