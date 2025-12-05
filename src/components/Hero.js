@@ -39,7 +39,7 @@ function Hero() {
             ✉
           </a>
         </div>
-        <img src="/images/your-image.png" alt="Bhavesh Chittora" className="hero-image" />
+        <img src="/images/bhvaesh.jpeg" alt="Bhavesh Chittora" className="hero-image" />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './NeuralSkillGraph.css'; // CSS for this component
+import Project3D from './Project3D'; // Import the 3D background component
 
 const NeuralSkillGraph = ({ skills, darkMode, onClose }) => {
   const graphRef = useRef(null);
@@ -24,6 +25,7 @@ const NeuralSkillGraph = ({ skills, darkMode, onClose }) => {
   return (
     <div className="neural-graph-modal-overlay">
       <div className="neural-graph-modal-content">
+        <Project3D shape="dodecahedron" color={darkMode ? 0x6366f1 : 0x3b82f6} animationSpeed={0.7} /> {/* Unique 3D background */}
         <button className="neural-graph-close-button" onClick={onClose}>
           &times; {/* Multiplication sign for a cross icon */}
         </button>
