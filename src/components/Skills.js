@@ -1,8 +1,9 @@
-import React from 'react';
-import Skills3D from './Skills3D'; // Import the new 3D component
+import React, { useState } from 'react';
 import './Skills.css'; // Assuming you'll create a CSS file for Skills
 
 function Skills() {
+  const [openCategories, setOpenCategories] = useState([]); // State to manage open/closed categories
+
   const skillsCategories = [
     {
       id: 1,
@@ -92,27 +93,40 @@ function Skills() {
     },
   ];
 
+  const toggleCategory = (id) => {
+    setOpenCategories(prevOpenCategories =>
+      prevOpenCategories.includes(id)
+        ? prevOpenCategories.filter(categoryId => categoryId !== id)
+        : [...prevOpenCategories, id]
+    );
+  };
+
   return (
     <section id="skills" className="section skills-section">
       <h2 className="section-title">Skills & Technologies</h2>
       <div className="skills-container">
         {skillsCategories.map(category => (
           <div key={category.id} className="skill-category">
-            <h3>{category.icon} {category.category}</h3>
-            <ul className="skill-list">
-              {category.skills.map((skill, index) => (
-                <li key={index} className="skill-item">
-                  <span className="skill-icon">{skill.icon}</span>
-                  <span className="skill-name">{skill.name}</span>
-                  <span className="skill-proficiency">{skill.proficiency}%</span>
-                </li>
-              ))}
-            </ul>
+            <div className="category-header" onClick={() => toggleCategory(category.id)}>
+              <h3>{category.icon} {category.category}</h3>
+              <span className={`category-toggle ${openCategories.includes(category.id) ? 'expanded' : ''}`}>
+                {/* You can use an SVG icon here, e.g., an arrow */}
+                &#9660; {/* Down arrow */}
+              </span>
+            </div>
+            {openCategories.includes(category.id) && (
+              <ul className="skill-list">
+                {category.skills.map((skill, index) => (
+                  <li key={index} className="skill-item">
+                    <span className="skill-icon">{skill.icon}</span>
+                    <span className="skill-name">{skill.name}</span>
+                    <span className="skill-proficiency">{skill.proficiency}%</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
-      </div>
-      <div className="skills-3d-container">
-        <Skills3D skillsCategories={skillsCategories} />
       </div>
     </section>
   );
