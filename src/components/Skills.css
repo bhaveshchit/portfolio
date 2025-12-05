@@ -1,0 +1,143 @@
+/* src/components/Skills.css */
+
+.skills-section {
+  /* Inherit padding, max-width, margin from global .section in App.css */
+  /* background-color: transparent; */ /* Handled by App.css .app.dark/light */
+  /* color: var(--dark-text); */ /* Handled by App.css .app.dark/light */
+  text-align: center;
+}
+
+/* .section-title is handled by App.css */
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skill-category {
+  background: transparent; /* Use transparent background for glassmorphism */
+  border-radius: 12px; /* Slightly smaller radius for consistency */
+  padding: 25px;
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative; /* Needed for pseudo-elements or absolute positioning */
+  overflow: hidden; /* Ensures blur doesn't bleed */
+}
+
+.app.dark .skill-category {
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border for dark mode */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Darker shadow for dark mode */
+}
+
+.app.light .skill-category {
+  border: 1px solid rgba(0, 0, 0, 0.2); /* Subtle black border for light mode */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Lighter shadow for light mode */
+}
+
+.skill-category:hover {
+  transform: translateY(-5px);
+}
+
+.app.dark .skill-category:hover {
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15); /* Lighter shadow on hover for dark mode */
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.app.light .skill-category:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Darker shadow on hover for light mode */
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+.skill-category h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.app.dark .skill-category h3 {
+  color: var(--primary-color-dark); /* Use primary color for headings */
+}
+
+.app.light .skill-category h3 {
+  color: var(--primary-color-light); /* Use primary color for headings */
+}
+
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.app.dark .skill-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle separator */
+}
+
+.app.light .skill-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Subtle separator */
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+}
+
+.skill-icon {
+  font-size: 1.2em;
+  margin-right: 10px;
+}
+
+.app.dark .skill-icon {
+  color: var(--primary-color-dark); /* Accent color for icons */
+}
+
+.app.light .skill-icon {
+  color: var(--primary-color-light); /* Accent color for icons */
+}
+
+.skill-name {
+  flex-grow: 1;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.app.dark .skill-name {
+  color: var(--dark-text);
+}
+
+.app.light .skill-name {
+  color: var(--light-text);
+}
+
+.skill-proficiency {
+  font-weight: bold;
+}
+
+.app.dark .skill-proficiency {
+  color: var(--primary-color-dark); /* Accent color for proficiency */
+}
+
+.app.light .skill-proficiency {
+  color: var(--primary-color-light); /* Accent color for proficiency */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* .section-title is handled by App.css */
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Skills3D from './Skills3D'; // Import the new 3D component
+import './Skills.css'; // Assuming you'll create a CSS file for Skills
 
 function Skills() {
-  const [expandedCategory, setExpandedCategory] = useState(1);
-
   const skillsCategories = [
     {
       id: 1,
@@ -93,50 +93,29 @@ function Skills() {
   ];
 
   return (
-    <section id="skills" className="section">
+    <section id="skills" className="section skills-section">
       <h2 className="section-title">Skills & Technologies</h2>
-      <div className="container">
-        <div className="skills-container">
-          {skillsCategories.map((category) => (
-            <div key={category.id} className="skills-category">
-              <button
-                className="category-header"
-                onClick={() => setExpandedCategory(
-                  expandedCategory === category.id ? null : category.id
-                )}
-              >
-                <span className="category-icon">{category.icon}</span>
-                <span className="category-name">{category.category}</span>
-                <span className={`category-toggle ${expandedCategory === category.id ? 'expanded' : ''}`}>
-                  ▼
-                </span>
-              </button>
-
-              {expandedCategory === category.id && (
-                <div className="category-skills">
-                  {category.skills.map((skill) => (
-                    <div key={skill.name} className="skill-item-new">
-                      <div className="skill-header">
-                        <div className="skill-info">
-                          <span className="skill-icon-new">{skill.icon}</span>
-                          <span className="skill-name-new">{skill.name}</span>
-                        </div>
-                        <span className="proficiency-badge">{skill.proficiency}%</span>
-                      </div>
-                      <div className="proficiency-bar">
-                        <div 
-                          className="proficiency-fill" 
-                          style={{ width: `${skill.proficiency}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
+      <div className="skills-container">
+        {skillsCategories.map(category => (
+          <div key={category.id} className="skill-category">
+            <h3>{category.icon} {category.category}</h3>
+            <ul className="skill-list">
+              {category.skills.map((skill, index) => (
+                <li key={index} className="skill-item">
+                  <span className="skill-icon">{skill.icon}</span>
+                  <span className="skill-name">{skill.name}</span>
+                  <span className="skill-proficiency">{skill.proficiency}%</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
+      {/* The 3D skills component can be placed here if desired,
+          but for now, we prioritize the visible list. */}
+      {/* <div className="skills-3d-container">
+        <Skills3D skillsCategories={skillsCategories} />
+      </div> */}
     </section>
   );
 }
