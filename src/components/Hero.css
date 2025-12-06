@@ -34,3 +34,16 @@
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); /* Example shadow */
 }
 
+.btn-tertiary {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 2px solid #fff;
+  backdrop-filter: blur(5px);
+}
+
+.btn-tertiary:hover {
+  background-color: transparent;
+  color: var(--color-accent);
+  box-shadow: var(--box-shadow-hover);
+}
+

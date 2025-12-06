@@ -27,6 +27,9 @@ function Hero() {
           <a href="#contact" className="btn btn-secondary">
             Get In Touch
           </a>
+          <a href="/cv.pdf" download="Bhavesh_Chittora_CV.pdf" className="btn btn-tertiary">
+            Download CV
+          </a>
         </div>
         <div className="social-links">
           <a href="https://github.com/bhaveshchit" target="_blank" rel="noopener noreferrer" className="social-link" title="GitHub">

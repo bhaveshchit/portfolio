@@ -12,6 +12,7 @@ import Contact from './components/Contact';
 import Navigation from './components/Navigation';
 import CursorBlast from './components/CursorBlast';
 import CustomCursor from './components/CustomCursor';
+import FloatingCVButton from './components/FloatingCVButton';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -43,6 +44,7 @@ function App() {
           <p>&copy; 2025 Bhavesh. Portfolio Website</p>
         </footer>
       </div>
+      <FloatingCVButton />
     </div>
   );
 }

@@ -93,6 +93,9 @@ function Contact() {
           <button type="submit" className="btn btn-primary">
             {submitted ? '✓ Message Sent!' : 'Send Message'}
           </button>
+          <a href="/cv.pdf" download="Bhavesh_Chittora_CV.pdf" className="btn btn-tertiary" style={{textAlign: 'center'}}>
+            Download CV
+          </a>
         </form>
 
         <div className="contact-links">

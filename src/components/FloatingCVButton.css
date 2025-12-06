@@ -1,0 +1,13 @@
+.floating-cv-button {
+  display: none; /* Hidden by default */
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .floating-cv-button {
+    display: block; /* Shown on screens 768px or less */
+  }
+}
