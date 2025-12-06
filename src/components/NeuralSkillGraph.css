@@ -77,6 +77,16 @@
   align-items: center;
 }
 
+.neural-graph-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+
 .skill-node {
   position: absolute;
   width: 120px; /* Increased size for better visibility of text */
@@ -99,10 +109,11 @@
   opacity: 0;
   animation: nodeAppear 0.5s forwards;
   animation-delay: var(--animation-delay, 0s); /* Use CSS variable for staggered animation */
+  transform: translate(-50%, -50%);
 }
 
 .skill-node:hover {
-  transform: scale(1.1) translateY(-5px);
+  transform: translate(-50%, -50%) scale(1.1);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 }
 
