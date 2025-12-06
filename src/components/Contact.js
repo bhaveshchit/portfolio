@@ -103,7 +103,7 @@ function Contact() {
             <span>📧</span>
             <span>chittorabhavesh24@gmail.com</span>
           </a>
-          <a href="tel:+1234567890" className="contact-link">
+          <a href="tel:+918824991267" className="contact-link">
             <span>📱</span>
             <span>+91-8824991267</span>
           </a>
