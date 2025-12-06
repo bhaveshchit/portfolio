@@ -10,7 +10,6 @@ function Skills({ darkMode }) {
     {
       id: 1,
       category: 'Frontend Development',
-      icon: '💻',
       skills: [
         { name: 'React.js', icon: '⚛️', proficiency: 95 },
         { name: 'Next.js', icon: '▲', proficiency: 90 },
@@ -27,7 +26,6 @@ function Skills({ darkMode }) {
     {
       id: 2,
       category: 'Backend Development',
-      icon: '⚙️',
       skills: [
         { name: 'Node.js', icon: '🟩', proficiency: 95 },
         { name: 'Express.js', icon: '🚀', proficiency: 90 },
@@ -43,7 +41,6 @@ function Skills({ darkMode }) {
     {
       id: 3,
       category: 'Cloud & DevOps',
-      icon: '☁️',
       skills: [
         { name: 'AWS Serverless', icon: '⚡', proficiency: 90 },
         { name: 'AWS Cognito', icon: '🔐', proficiency: 85 },
@@ -59,7 +56,6 @@ function Skills({ darkMode }) {
     {
       id: 4,
       category: 'AI Integration & APIs',
-      icon: '🤖',
       skills: [
         { name: 'ChatGPT Integration', icon: '💬', proficiency: 90 },
         { name: 'DeepSeek API', icon: '🧠', proficiency: 85 },
@@ -72,7 +68,6 @@ function Skills({ darkMode }) {
     {
       id: 5,
       category: 'Development Tools & Platforms',
-      icon: '🛠️',
       skills: [
         { name: 'GitHub', icon: '🐙', proficiency: 95 },
         { name: 'Jira', icon: '📋', proficiency: 90 },
@@ -84,7 +79,6 @@ function Skills({ darkMode }) {
     {
       id: 6,
       category: 'Project Management',
-      icon: '📊',
       skills: [
         { name: 'Task Tracking', icon: '📌', proficiency: 90 },
         { name: 'Resource Allocation', icon: '👥', proficiency: 85 },
