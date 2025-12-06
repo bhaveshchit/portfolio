@@ -12,9 +12,18 @@ import CursorBlast from './components/CursorBlast';
 import CustomCursor from './components/CustomCursor';
 import FloatingCVButton from './components/FloatingCVButton';
 import GlobalSpiderWeb from './components/GlobalSpiderWeb';
+import Loader from './components/Loader';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     document.body.className = darkMode ? 'dark' : 'light';
@@ -23,6 +32,10 @@ function App() {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={`app ${darkMode ? 'dark' : 'light'}`} style={{ position: 'relative', minHeight: '100vh' }}>
