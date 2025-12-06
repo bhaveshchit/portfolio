@@ -250,7 +250,7 @@ function Background3D({ darkMode }) {
   return (
     <div ref={bgRef} style={{
       position: 'fixed',
-      zIndex: 0,
+      zIndex: 3,
       top: 0,
       left: 0,
       width: '100vw',

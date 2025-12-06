@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Hero from './components/Hero';
-import Background3D from './components/Background3D';
-import ShootingStars from './components/ShootingStars';
 import BackgroundMusic from './components/BackgroundMusic';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -13,6 +11,7 @@ import Navigation from './components/Navigation';
 import CursorBlast from './components/CursorBlast';
 import CustomCursor from './components/CustomCursor';
 import FloatingCVButton from './components/FloatingCVButton';
+import GlobalSpiderWeb from './components/GlobalSpiderWeb';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -27,12 +26,11 @@ function App() {
 
   return (
     <div className={`app ${darkMode ? 'dark' : 'light'}`} style={{ position: 'relative', minHeight: '100vh' }}>
-  <ShootingStars active={darkMode} />
-  <Background3D darkMode={darkMode} />
-  <BackgroundMusic />
-  <CustomCursor />
-  <CursorBlast />
-      <div style={{ position: 'relative', zIndex: 10 }}>
+      <GlobalSpiderWeb darkMode={darkMode} />
+      <BackgroundMusic />
+      <CustomCursor />
+      <CursorBlast />
+      <div style={{ position: 'relative', zIndex: 1 }}>
         <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
         <Hero />
         <About />
