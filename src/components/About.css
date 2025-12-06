@@ -7,13 +7,13 @@
 }
 
 .about-profile {
-  flex: 0 0 220px;
+  flex: 0 0 320px;
   text-align: center;
 }
 
 .profile-picture-container {
-  width: 180px;
-  height: 180px;
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
   margin: 0 auto;
   padding: 7px;
